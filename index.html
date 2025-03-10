@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="generateNumbers()">
+    <h1>Hvilket tall er størst?</h1>
+
+    <div id="numberTop"></div>
+    <input type="text" id="input" style="width: 30px;"> 
+    <div id="numberBottom">2</div>
+    <button onclick="compareNumbers('input')">submit</button> 
+    <button onclick="resetNumbers()">Reset</button>
+
+    <script>
+        let number1;
+        let number2;
+
+
+        function generateNumbers(){
+            number1 = 2;
+            number2 = 5;
+            document.getElementById('numberTop').innerHTML = number1;
+            document.getElementById('numberBottom').innerHTML = number2;
+        }
+
+        function compareNumbers (operator){
+            // if Number1 is greater than number 2 reload page with new numbers
+
+        }
+       function resetNumbers(){
+        location.reload()
+       }
+
+    </script>
+
+</body>
+</html>
