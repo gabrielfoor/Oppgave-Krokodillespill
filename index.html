@@ -7,7 +7,8 @@
 </head>
 <body onload="generateNumbers()">
     <h1>Hvilket tall er størst?</h1>
-
+    <div id="scoreCounter" style="font-size: x-large;"></div>
+    <div id="feedback"></div>
     <div id="numberTop"></div>
     <input type="text" id="input" style="width: 30px;"> 
     <div id="numberBottom">2</div>
@@ -17,22 +18,34 @@
     <script>
         let number1;
         let number2;
-
+        let score = 0;
+        let inputValue;
 
         function generateNumbers(){
-            number1 = 2;
-            number2 = 5;
+            number1 = Math.floor( Math.random() * 10 + 1);
+            number2 = Math.floor( Math.random() * 10 + 1);
             document.getElementById('numberTop').innerHTML = number1;
             document.getElementById('numberBottom').innerHTML = number2;
+            document.getElementById('scoreCounter').innerHTML = "Score:" + score
         }
 
         function compareNumbers (operator){
-            // if Number1 is greater than number 2 reload page with new numbers
+            if (operator == ">" && number1 > number2  ){
+                score ++
+                document.getElementById('feedback').innerHTML= "Riktig!"
+                generateNumbers()
+            }
+            else if (operator == "<" && number1 < number2 ){
+                score ++
+                document.getElementById('feedback').innerHTML= "Riktig!"
+                generateNumbers()
+            }
+            
+            else {
+                document.getElementById('feedback').innerHTML= "Prøv igjen"}
 
         }
-       function resetNumbers(){
-        location.reload()
-       }
+
 
     </script>
 
