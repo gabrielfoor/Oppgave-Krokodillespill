@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Krokkodillespill</title>
 </head>
 <body onload="generateNumbers()">
     <h1>Hvilket tall er størst?</h1>
     <div id="scoreCounter" style="font-size: x-large;"></div>
     <div id="feedback"></div>
     <div id="numberTop"></div>
-    <input type="text" id="input" style="width: 30px;"> 
+    <input type="text" id="input" style="width: 40px;" autocomplete="off"> 
     <div id="numberBottom">2</div>
-    <button onclick="compareNumbers('input')">submit</button> 
+    <button onclick="compareNumbers()">svar</button> 
     <button onclick="resetNumbers()">Reset</button>
-
+    <div >Bruk krokodilleteng </div>
+    
     <script>
         let number1;
         let number2;
@@ -29,21 +30,25 @@
             document.getElementById('scoreCounter').innerHTML = "Score:" + score
         }
 
-        function compareNumbers (operator){
-            if (operator == ">" && number1 > number2  ){
-                score ++
-                document.getElementById('feedback').innerHTML= "Riktig!"
-                generateNumbers()
-            }
-            else if (operator == "<" && number1 < number2 ){
-                score ++
+        function compareNumbers (){
+            inputValue = document.getElementById('input').value;
+            if ((inputValue === ">" && number1 > number2) || (inputValue === "<" && number1 < number2 ) ||
+                (inputValue === "=" && number1 == number2) ){
+                score++
                 document.getElementById('feedback').innerHTML= "Riktig!"
                 generateNumbers()
             }
             
             else {
-                document.getElementById('feedback').innerHTML= "Prøv igjen"}
+                document.getElementById('feedback').innerHTML= "Prøv igjen"
+                score  = score - 1;
+                document.getElementById('scoreCounter').innerHTML ="Score:" + score
+            }
 
+        }
+        function resetNumbers(){
+            score = 0
+            generateNumbers()
         }
 
 
